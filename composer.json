@@ -1,0 +1,19 @@
+{
+    "name": "adods/page-marker",
+    "description": "Library for saving CRUD list filter in request query",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {"Adods\\PageMarker\\": "src/"}
+    },
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "authors": [
+        {
+            "name": "Achmad Ardiansyah",
+            "email": "theadods@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
