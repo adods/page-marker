@@ -19,21 +19,21 @@ class PageMarker
      *
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * Base URL for redirection
      *
      * @var string
      */
-    private $url;
+    protected $url;
 
     /**
      * Base array to remember
      *
      * @var array
      */
-    private $base;
+    protected $base;
 
     /**
      * Base session key name
@@ -54,7 +54,7 @@ class PageMarker
      *
      * @var boolean
      */
-    private $ready = false;
+    protected $ready = false;
     
     /**
      * Constructor
@@ -108,7 +108,7 @@ class PageMarker
         $this->setName($pathNoExt);
     }
 
-    private function cleanName($name)
+    protected function cleanName($name)
     {
         // Replace double space with single one
         $name = str_replace('  ', ' ', $name);
@@ -183,7 +183,7 @@ class PageMarker
      *
      * @return void
      */
-    private function prepareRedirection()
+    protected function prepareRedirection()
     {
         // If forget key detected, then reset
         if (isset($this->base[$this->forgetKey])) {
@@ -215,7 +215,7 @@ class PageMarker
      * @param string $url URL to be redirected to
      * @return void
      */
-    private function redirect($url)
+    protected function redirect($url)
     {
         header('HTTP/1.1 307 Temporary Redirect');
         header('Location: '.$url);
@@ -227,7 +227,7 @@ class PageMarker
      *
      * @return string
      */
-    private function getCurrentUrl()
+    protected function getCurrentUrl()
     {
         $ssl = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on');
         $lsp = strtolower($_SERVER['SERVER_PROTOCOL']);
@@ -350,7 +350,7 @@ class PageMarker
      *
      * @return void
      */
-    private function sessionName()
+    protected function sessionName()
     {
         return $this->sessionKey.'.'.$this->name;
     }
@@ -360,7 +360,7 @@ class PageMarker
      *
      * @return void
      */
-    private function registerSession()
+    protected function registerSession()
     {
         $_SESSION[$this->sessionName()] = $this->base;
     }
@@ -370,7 +370,7 @@ class PageMarker
      *
      * @return void
      */
-    private function retrieveSession()
+    protected function retrieveSession()
     {
         return $_SESSION[$this->sessionName()];
     }
